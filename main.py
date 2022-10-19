@@ -95,11 +95,14 @@ def tsp_brute_force(graph):
         k = 0
         for point in permutation:
             curr_cost += graph[k][point]
+            if curr_cost >= min_cost:
+                break
             k = point
-        curr_cost += graph[k][0]
-        min_cost = min(min_cost, curr_cost)
-        if min_cost == curr_cost:
-            optimal_path = permutation
+        else:
+            curr_cost += graph[k][0]
+            min_cost = min(min_cost, curr_cost)
+            if min_cost == curr_cost:
+                optimal_path = permutation
 
     return min_cost, optimal_path
 
